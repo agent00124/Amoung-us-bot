@@ -1,0 +1,10 @@
+app = "amoung-us-bot"
+primary_region = "sin"
+
+[build]
+
+[env]
+
+[[services]]
+
+[checks]
