@@ -1,6 +1,16 @@
-# 🚀 Among Us VC Mute Bot
+# 🛸 Among Us VC Bot — Design City
 
-A Discord bot that lets you **mute/unmute your entire voice channel** with one click — perfect for Among Us sessions.
+A Discord bot that mutes and unmutes your entire voice channel during Among Us sessions. Built and maintained by **Design City**.
+
+---
+
+## 👥 Credits
+
+| Role | Member |
+|------|--------|
+| 🎬 Director | eirlixx.ipv |
+| 🎨 Creatives | arshit |
+| 💻 Developing | agent.fx |
 
 ---
 
@@ -13,29 +23,29 @@ npm install
 
 ### 2. Create your Discord Bot
 1. Go to [Discord Developer Portal](https://discord.com/developers/applications)
-2. Click **New Application** → name it "Among Us Bot"
+2. Click **New Application** → name it anything
 3. Go to **Bot** tab → Click **Add Bot**
 4. Under **Privileged Gateway Intents**, enable:
-   - ✅ **Server Members Intent**
-   - ✅ **Message Content Intent**
+   - ✅ Server Members Intent
+   - ✅ Message Content Intent
+   - ✅ Presence Intent
 5. Copy your **Bot Token**
 
-### 3. Set your token
-Open `bot.js` and replace:
-```js
-const BOT_TOKEN = 'YOUR_BOT_TOKEN_HERE';
+### 3. Set up your token
+Create a `.env` file in the root folder:
 ```
-with your actual token.
+BOT_TOKEN=your_actual_token_here
+```
 
 ### 4. Invite the bot to your server
-Use this URL (replace `YOUR_APP_ID` with your Application ID):
+Replace `YOUR_APP_ID` with your Application ID:
 ```
 https://discord.com/api/oauth2/authorize?client_id=YOUR_APP_ID&permissions=12582912&scope=bot
 ```
 
-The bot needs these permissions:
+Permissions needed:
 - **Mute Members** — to mute/unmute players
-- **Read Messages / Send Messages** — for commands
+- **Read & Send Messages** — for commands
 
 ### 5. Run the bot
 ```bash
@@ -44,41 +54,40 @@ npm start
 
 ---
 
-## 🎮 How to Use
+## 🎮 Commands
 
-1. **Join a voice channel** with your Among Us friends
-2. In any text channel, type:
-
-| Command | What it does |
+| Command | Description |
 |---------|-------------|
-| `!au` or `!au panel` | Spawns the interactive control panel with buttons |
-| `!au mute` | Instantly mutes everyone in your VC |
-| `!au unmute` | Instantly unmutes everyone in your VC |
-| `!au help` | Shows all commands |
-
-### Control Panel Buttons
-
-| Button | Phase | Action |
-|--------|-------|--------|
-| ▶ Start Game | Lobby → Playing | Mutes everyone |
-| 📢 Meeting! | Playing → Meeting | Unmutes everyone |
-| 🏁 End Game | Meeting/Playing → Lobby | Unmutes everyone |
-| 🔄 Refresh | Any | Updates the player list |
+| `!au` | Open the VC control panel |
+| `!au help` | Show all commands |
+| `!au credits` | Show credits |
 
 ---
 
-## 🔄 Typical Game Flow
+## 🕹️ Control Panel Buttons
+
+| Button | Action |
+|--------|--------|
+| 📡 Start Game | Mutes everyone in VC & starts timer |
+| 📢 Meeting! | Unmutes everyone in VC |
+| 🏁 End Game | Unmutes all & saves game to history |
+| 📊 Dashboard | Shows session history & stats |
+| 🔄 Reset Counter | Clears game count & history |
+
+---
+
+## 🔄 Game Flow
 
 ```
 Lobby (everyone can talk)
-   ↓  [Start Game]
+   ↓  [Start Game] — mutes all
 Playing (everyone muted)
-   ↓  [Meeting!]
+   ↓  [Meeting!] — unmutes all, timer keeps running
 Meeting (everyone unmuted)
-   ↓  [Start Game again]
+   ↓  [Start Game] — mutes all again
 Playing (everyone muted)
-   ↓  [End Game]
-Lobby (everyone unmuted)
+   ↓  [End Game] — unmutes all, saves to history
+Lobby
 ```
 
 ---
@@ -86,12 +95,16 @@ Lobby (everyone unmuted)
 ## ❗ Troubleshooting
 
 **Bot can't mute members?**
-- Make sure the bot role is **higher** than the players' roles in Server Settings → Roles
-- The bot needs **Mute Members** permission in the voice channel
+- Make sure the bot role is **higher** than player roles in Server Settings → Roles
+- Bot needs **Mute Members** permission in the voice channel
 
 **"No one in your VC" error?**
-- Make sure YOU are in the voice channel when you run the command
+- Make sure **you** are in a voice channel when running the command
 
 **Bot not responding?**
-- Ensure **Message Content Intent** is enabled in the Developer Portal
-- Check that the bot has **Read Messages** permission in your text channel
+- Check **Message Content Intent** is enabled in the Developer Portal
+- Make sure bot has **Read Messages** permission in your text channel
+
+---
+
+## 🏙️ Design City
